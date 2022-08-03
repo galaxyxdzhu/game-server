@@ -38,8 +38,8 @@ router.post('/uploadGame', async (req, res) => {
  * 添加游戏
  */
 router.post('/addGame', async (req, res) => {
-  const { name, size, genre, letter, added, pinyin, src } = req.body
-  const ret = await addGame(name, size, genre, letter, added, pinyin, src)
+  const { name, size, genre, letter, added, pinyin, src, no } = req.body
+  const ret = await addGame(name, size, genre, letter, added, pinyin, src, no)
 
   if (ret) {
     res.json({

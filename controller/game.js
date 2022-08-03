@@ -12,10 +12,10 @@ async function getGames() {
  * 添加游戏
  * @returns
  */
-async function addGame(name, size, genre, letter, added, pinyin, src) {
+async function addGame(name, size, genre, letter, added, pinyin, src, no) {
   const results = await query(
-    `insert into game (name, size, genre, letter, added, pinyin, src) values(?,?,?,?,?,?,?)`,
-    [name, size, genre, letter, added, pinyin, src]
+    `insert into game (name, size, genre, letter, added, pinyin, src, no) values(?,?,?,?,?,?,?,?)`,
+    [name, size, genre, letter, added, pinyin, src, no]
   )
   return results
 }
