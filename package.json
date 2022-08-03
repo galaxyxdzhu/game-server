@@ -1,0 +1,27 @@
+{
+  "name": "game-server",
+  "version": "1.0.0",
+  "description": "game server",
+  "main": "index.js",
+  "scripts": {
+    "serve": "node index.js",
+    "start": "npx nodemon -x npm run serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/galaxyxdzhu/game-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/galaxyxdzhu/game-server/issues"
+  },
+  "homepage": "https://github.com/galaxyxdzhu/game-server#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1",
+    "mysql2": "^2.3.3",
+    "path": "^0.12.7"
+  }
+}
