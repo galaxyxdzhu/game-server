@@ -1,7 +1,6 @@
 const express = require('express')
-const { getGames, addGame, updateGame } = require('../controller/game')
+const { getGames, addGame, updateGame, getGameTypes } = require('../controller/game')
 
-const upload = require('../upload')
 const router = express.Router()
 
 /**
@@ -23,10 +22,26 @@ router.get('/games', async (req, res) => {
   }
 })
 
-router.post('/uploadGame', async (req, res) => {
-  console.log(req.body)
-  const path = await upload(req, res)
-  console.log(path)
+/**
+ * 获取游戏列表
+ */
+router.get('/gameTypes', async (req, res) => {
+  let ret = await getGameTypes()
+  if (ret) {
+    ret = Object.values(ret)
+      .map((item) => item.genre)
+      .filter((item) => !!item)
+    res.json({
+      code: 1,
+      data: ret,
+      status: 'ok'
+    })
+  } else {
+    res.json({
+      code: 0,
+      msg: '获取失败'
+    })
+  }
 })
 
 /**

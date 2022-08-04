@@ -1,6 +1,7 @@
 const multerConfig = require('./multerConfig')
 
 const fileName = 'file'
+const baseUploadUrl = 'http://127.0.0.1:3000'
 const imgPath = '/img/images'
 
 function upload(req, res) {
@@ -9,7 +10,7 @@ function upload(req, res) {
       if (err) {
         reject(err)
       } else {
-        const filePath = imgPath + '/' + req.file.filename
+        const filePath = baseUploadUrl + imgPath + '/' + req.file.filename
         resolve(filePath)
       }
     })

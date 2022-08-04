@@ -15,7 +15,8 @@ let storage = multer.diskStorage({
     }
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname)
+    const type = file.mimetype.split('/')[1]
+    cb(null, md5(Date.now() + file.originalname) + '.' + type)
   }
 })
 

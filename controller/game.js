@@ -8,6 +8,17 @@ async function getGames() {
   const results = await query(`select * from game`)
   return results
 }
+
+/**
+ * 获取游戏类型列表
+ * @returns
+ */
+async function getGameTypes() {
+  const resluts = await query(`
+  select distinct genre from game where game.genre is not null;`)
+  return resluts
+}
+
 /**
  * 添加游戏
  * @returns
@@ -44,5 +55,6 @@ async function updateGame(id, params) {
 module.exports = {
   getGames,
   addGame,
-  updateGame
+  updateGame,
+  getGameTypes
 }
