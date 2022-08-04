@@ -20,7 +20,29 @@ async function addGame(name, size, genre, letter, added, pinyin, src, no) {
   return results
 }
 
+/**
+ * 更新游戏内容
+ * @returns
+ */
+async function updateGame(id, params) {
+  let queryString = `update game set `
+  const paramsKeys = Object.keys(params)
+  const values = paramsKeys.map((key, index) => {
+    if (index === paramsKeys.length - 1) {
+      queryString += `${key}=?`
+    } else {
+      queryString += `${key}=?,`
+    }
+    return params[key]
+  })
+  queryString += ' where id= ?'
+  values.push(id)
+  const results = await query(queryString, values)
+  return results
+}
+
 module.exports = {
   getGames,
-  addGame
+  addGame,
+  updateGame
 }
