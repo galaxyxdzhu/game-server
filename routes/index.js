@@ -4,6 +4,7 @@ const indexRouter = express.Router()
 
 const userRouter = require('./user')
 const gameRouter = require('./game')
+const orderRouter = require('./order')
 
 // 图片上传
 indexRouter.post('/upload', async (req, res) => {
@@ -26,6 +27,7 @@ function router(app) {
   app.use('/', indexRouter)
   app.use('/user', userRouter)
   app.use('/game', gameRouter)
+  app.use('/order', orderRouter)
 }
 
 module.exports = router

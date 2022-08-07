@@ -1,0 +1,29 @@
+const { query } = require('../db')
+
+/**
+ * 获取全部订单
+ */
+async function getOrders() {
+  const results = await query('select * from orders')
+  return results
+}
+
+/**
+ * 添加订单
+ * @returns
+ */
+async function addOrder(name, phone, games, size, createAt) {
+  const results = await query(`insert into orders (name, phone, games, size, createAt) values(?,?,?,?,?)`, [
+    name,
+    phone,
+    games,
+    size,
+    createAt
+  ])
+  return results
+}
+
+module.exports = {
+  addOrder,
+  getOrders
+}
