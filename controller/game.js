@@ -52,9 +52,15 @@ async function updateGame(id, params) {
   return results
 }
 
+async function deleteGame(id) {
+  const results = query('delete from game where id = ?', [id])
+  return results
+}
+
 module.exports = {
   getGames,
   addGame,
   updateGame,
-  getGameTypes
+  getGameTypes,
+  deleteGame
 }

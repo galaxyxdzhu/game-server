@@ -1,5 +1,5 @@
 const express = require('express')
-const { getGames, addGame, updateGame, getGameTypes } = require('../controller/game')
+const { getGames, addGame, updateGame, getGameTypes, deleteGame } = require('../controller/game')
 
 const router = express.Router()
 
@@ -97,6 +97,25 @@ router.post('/addGames', async (req, res) => {
     res.json({
       code: 1,
       status: 'ok'
+    })
+  }
+})
+
+/**
+ * 删除游戏
+ */
+router.post('/delete', async (req, res) => {
+  const { id } = req.body
+  const ret = await deleteGame(id)
+  if (ret) {
+    res.json({
+      code: 1,
+      status: 'ok'
+    })
+  } else {
+    res.json({
+      code: 0,
+      msg: '删除失败'
     })
   }
 })
