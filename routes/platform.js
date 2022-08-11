@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get('/platforms', async (req, res) => {
   const ret = await getPlatforms()
-  if (ret && ret.length) {
+  if (ret) {
     res.json({
       code: 1,
       data: ret,
