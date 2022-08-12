@@ -1,11 +1,28 @@
 const express = require('express')
-const { addOrder, getOrders } = require('../controller/order')
+const { addOrder, getOrders, getOrderDetail } = require('../controller/order')
 
 const router = express.Router()
 
+router.get('/orderDetail', async (req, res) => {
+  const { id } = req.query
+  const ret = await getOrderDetail(id)
+  if (ret && ret.length) {
+    res.json({
+      code: 1,
+      data: ret[0],
+      status: 'ok'
+    })
+  } else {
+    res.json({
+      code: 0,
+      msg: '获取失败'
+    })
+  }
+})
+
 router.get('/getOrders', async (req, res) => {
   const ret = await getOrders()
-  if (ret && ret.length) {
+  if (ret) {
     res.json({
       code: 1,
       data: ret,

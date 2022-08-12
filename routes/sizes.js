@@ -1,10 +1,10 @@
 const express = require('express')
-const { getGameTypes, addGameType, deleteGameType } = require('../controller/gameType')
+const { getSizes, addSize, deleteSize } = require('../controller/size')
 
 const router = express.Router()
 
-router.get('/gameTypes', async (req, res) => {
-  const ret = await getGameTypes()
+router.get('/sizes', async (req, res) => {
+  const ret = await getSizes()
   if (ret) {
     res.json({
       code: 1,
@@ -22,8 +22,8 @@ router.get('/gameTypes', async (req, res) => {
  * 添加平台
  */
 router.post('/add', async (req, res) => {
-  const { name, src } = req.body
-  const ret = await addGameType(name, src)
+  const { normalSize, actualSize } = req.body
+  const ret = await addSize(normalSize, actualSize)
   if (ret) {
     res.json({
       code: 1,
@@ -41,7 +41,7 @@ router.post('/add', async (req, res) => {
  */
 router.post('/delete', async (req, res) => {
   const { id } = req.body
-  const ret = await deleteGameType(id)
+  const ret = await deleteSize(id)
   if (ret) {
     res.json({
       code: 1,
