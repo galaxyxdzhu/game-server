@@ -8,6 +8,11 @@ async function getOrders() {
   return results
 }
 
+async function getOrderDetail(id) {
+  const results = await query('select * from orders where id = ?', [id])
+  return results
+}
+
 /**
  * 添加订单
  * @returns
@@ -25,5 +30,6 @@ async function addOrder(name, phone, games, size, createAt) {
 
 module.exports = {
   addOrder,
-  getOrders
+  getOrders,
+  getOrderDetail
 }
