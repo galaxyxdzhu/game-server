@@ -67,8 +67,8 @@ router.post('/updateGame', async (req, res) => {
  * 添加游戏
  */
 router.post('/addGame', async (req, res) => {
-  const { name, size, genre, letter, added, pinyin, src, no } = req.body
-  const ret = await addGame(name, size, genre, letter, added, pinyin, src, no)
+  const { name, size, genre, letter, added, pinyin, src, no, rate } = req.body
+  const ret = await addGame(name, size, genre, letter, added, pinyin, src, no, rate)
 
   if (ret) {
     res.json({
@@ -90,8 +90,8 @@ router.post('/addGames', async (req, res) => {
   const { games } = req.body
   if (Array.isArray(games)) {
     games.forEach(async (item) => {
-      const { name, size, genre, letter, added, pinyin, src, no } = item
-      await addGame(name, size, genre, letter, added, pinyin, src, no)
+      const { name, size, genre, letter, added, pinyin, src, no, rate } = item
+      await addGame(name, size, genre, letter, added, pinyin, src, no, rate)
     })
 
     res.json({

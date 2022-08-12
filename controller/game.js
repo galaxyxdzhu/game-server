@@ -23,10 +23,10 @@ async function getGameTypes() {
  * 添加游戏
  * @returns
  */
-async function addGame(name, size, genre, letter, added, pinyin, src, no) {
+async function addGame(name, size, genre, letter, added, pinyin, src, no, rate) {
   const results = await query(
-    `insert into game (name, size, genre, letter, added, pinyin, src, no) values(?,?,?,?,?,?,?,?)`,
-    [name, size, genre, letter, added, pinyin, src, no]
+    `insert into game (name, size, genre, letter, added, pinyin, src, no, rate) values(?,?,?,?,?,?,?,?,?)`,
+    [name, size, genre, letter, added, pinyin, src, no, rate]
   )
   return results
 }
