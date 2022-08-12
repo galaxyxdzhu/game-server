@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get('/getOrders', async (req, res) => {
   const ret = await getOrders()
-  if (ret && ret.length) {
+  if (ret) {
     res.json({
       code: 1,
       data: ret,

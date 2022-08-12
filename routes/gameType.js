@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.get('/gameTypes', async (req, res) => {
   const ret = await getGameTypes()
-  if (ret && ret.length) {
+  if (ret) {
     res.json({
       code: 1,
       data: ret,
