@@ -18,6 +18,19 @@ async function addSize(normalSize, actualSize) {
 }
 
 /**
+ * 更新平台
+ * @returns
+ */
+async function updateSize(id, normalSize, actualSize) {
+  const results = await query(`update sizes set normalSize = ?, actualSize = ? where id = ?`, [
+    normalSize,
+    actualSize,
+    id
+  ])
+  return results
+}
+
+/**
  * 删除平台
  * @returns
  */
@@ -29,5 +42,6 @@ async function deleteSize(id) {
 module.exports = {
   getSizes,
   addSize,
+  updateSize,
   deleteSize
 }

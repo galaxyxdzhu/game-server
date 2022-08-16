@@ -1,14 +1,30 @@
 const express = require('express')
 const { login, getUsers } = require('../controller/user')
+const { jwtSecret } = require('../config')
+const jwt = require('jsonwebtoken')
 
 const router = express.Router()
 
 router.post('/login', async (req, res) => {
   const { username, password } = req.body
   const ret = await login(username, password)
+
+  const token = jwt.sign(
+    {
+      username,
+      password
+    },
+    jwtSecret,
+    {
+      expiresIn: 24 * 7 * 60 * 60 * 1000
+    }
+  )
   if (ret && ret.length) {
     res.json({
       code: 1,
+      data: {
+        token
+      },
       status: 'ok'
     })
   } else {

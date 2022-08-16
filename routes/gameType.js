@@ -1,5 +1,5 @@
 const express = require('express')
-const { getGameTypes, addGameType, deleteGameType } = require('../controller/gameType')
+const { getGameTypes, addGameType, deleteGameType, updateGameType } = require('../controller/gameType')
 
 const router = express.Router()
 
@@ -22,8 +22,8 @@ router.get('/gameTypes', async (req, res) => {
  * 添加平台
  */
 router.post('/add', async (req, res) => {
-  const { name, src } = req.body
-  const ret = await addGameType(name, src)
+  const { name } = req.body
+  const ret = await addGameType(name)
   if (ret) {
     res.json({
       code: 1,
@@ -33,6 +33,27 @@ router.post('/add', async (req, res) => {
     res.json({
       code: 0,
       msg: '添加失败'
+    })
+  }
+})
+
+/**
+ * 更新
+ */
+router.post('/update', async (req, res) => {
+  const { name, id } = req.body
+  console.log(req.body.id)
+  console.log(req.body.name)
+  const ret = await updateGameType(id, name)
+  if (ret) {
+    res.json({
+      code: 1,
+      status: 'ok'
+    })
+  } else {
+    res.json({
+      code: 0,
+      msg: '更新失败'
     })
   }
 })

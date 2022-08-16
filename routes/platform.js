@@ -1,5 +1,5 @@
 const express = require('express')
-const { getPlatforms, addPlatform, deletePlatform } = require('../controller/platform')
+const { getPlatforms, addPlatform, deletePlatform, updatePlatform } = require('../controller/platform')
 
 const router = express.Router()
 
@@ -24,6 +24,24 @@ router.get('/platforms', async (req, res) => {
 router.post('/add', async (req, res) => {
   const { name, src } = req.body
   const ret = await addPlatform(name, src)
+  if (ret) {
+    res.json({
+      code: 1,
+      status: 'ok'
+    })
+  } else {
+    res.json({
+      code: 0,
+      msg: '添加失败'
+    })
+  }
+})
+/**
+ * 添加平台
+ */
+router.post('/update', async (req, res) => {
+  const { id, name, src } = req.body
+  const ret = await updatePlatform(id, name, src)
   if (ret) {
     res.json({
       code: 1,

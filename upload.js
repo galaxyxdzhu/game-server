@@ -1,8 +1,8 @@
 const multerConfig = require('./multerConfig')
 
 const fileName = 'file'
-const baseUploadUrl = 'http://127.0.0.1:3000'
-const imgPath = '/img/images'
+const baseUploadUrl = 'http://82.156.202.155'
+const imgPath = '/images'
 
 function upload(req, res) {
   return new Promise((resolve, reject) => {

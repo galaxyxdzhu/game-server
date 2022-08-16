@@ -18,6 +18,15 @@ async function addGameType(name) {
 }
 
 /**
+ * 更新平台
+ * @returns
+ */
+async function updateGameType(id, name) {
+  const results = await query(`update gameType set name = ? where id = ?`, [name, id])
+  return results
+}
+
+/**
  * 删除平台
  * @returns
  */
@@ -29,5 +38,6 @@ async function deleteGameType(id) {
 module.exports = {
   getGameTypes,
   addGameType,
-  deleteGameType
+  deleteGameType,
+  updateGameType
 }

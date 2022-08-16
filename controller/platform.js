@@ -18,6 +18,15 @@ async function addPlatform(name, src) {
 }
 
 /**
+ * 添加平台
+ * @returns
+ */
+async function updatePlatform(id, name, src) {
+  const results = await query(`update platform  set name =?, src =?  where id = ?`, [name, src, id])
+  return results
+}
+
+/**
  * 删除平台
  * @returns
  */
@@ -29,5 +38,6 @@ async function deletePlatform(id) {
 module.exports = {
   getPlatforms,
   addPlatform,
-  deletePlatform
+  deletePlatform,
+  updatePlatform
 }

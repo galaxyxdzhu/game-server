@@ -1,5 +1,5 @@
 const express = require('express')
-const { getSizes, addSize, deleteSize } = require('../controller/size')
+const { getSizes, addSize, deleteSize, updateSize } = require('../controller/size')
 
 const router = express.Router()
 
@@ -19,7 +19,7 @@ router.get('/sizes', async (req, res) => {
   }
 })
 /**
- * 添加平台
+ * 添加size
  */
 router.post('/add', async (req, res) => {
   const { normalSize, actualSize } = req.body
@@ -33,6 +33,24 @@ router.post('/add', async (req, res) => {
     res.json({
       code: 0,
       msg: '添加失败'
+    })
+  }
+})
+/**
+ * 更新size
+ */
+router.post('/update', async (req, res) => {
+  const { id, normalSize, actualSize } = req.body
+  const ret = await updateSize(id, normalSize, actualSize)
+  if (ret) {
+    res.json({
+      code: 1,
+      status: 'ok'
+    })
+  } else {
+    res.json({
+      code: 0,
+      msg: '更新失败'
     })
   }
 })
