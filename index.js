@@ -16,7 +16,7 @@ app.all('*', function (req, res, next) {
   next()
 })
 
-const whiteList = ['/user/login']
+const whiteList = ['/user/login', '/order/addOrder']
 
 app.use((req, res, next) => {
   if (whiteList.includes(req.path) || req.method === 'GET') {

@@ -5,6 +5,11 @@ async function login(username, password) {
   return results
 }
 
+async function changePassword(username, password) {
+  const results = await query(`update user set password= ? where username = ?`, [password, username])
+  return results
+}
+
 /**
  * 获取所有用户
  * @returns
@@ -16,5 +21,6 @@ async function getUsers() {
 
 module.exports = {
   login,
+  changePassword,
   getUsers
 }

@@ -5,7 +5,7 @@ const { query } = require('../db')
  * @returns
  */
 async function getGames() {
-  const results = await query(`select * from game`)
+  const results = await query(`select * from game order by id desc`)
   return results
 }
 

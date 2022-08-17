@@ -1,5 +1,5 @@
 const express = require('express')
-const { login, getUsers } = require('../controller/user')
+const { login, getUsers, changePassword } = require('../controller/user')
 const { jwtSecret } = require('../config')
 const jwt = require('jsonwebtoken')
 
@@ -32,6 +32,24 @@ router.post('/login', async (req, res) => {
       code: 0,
       msg: '登录失败'
     })
+  }
+})
+
+router.post('/password', async (req, res) => {
+  const { username, password } = req.body
+  if (username && password) {
+    const ret = await changePassword(username, password)
+    if (ret) {
+      res.json({
+        code: 1,
+        msg: '修改成功'
+      })
+    } else {
+      res.json({
+        code: 0,
+        msg: '获取用户失败'
+      })
+    }
   }
 })
 

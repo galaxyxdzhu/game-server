@@ -8,6 +8,7 @@ const orderRouter = require('./order')
 const platformRouter = require('./platform')
 const gameTypeRouter = require('./gameType')
 const sizeRouter = require('./sizes')
+const settingRouter = require('./setting')
 
 // 图片上传
 indexRouter.post('/upload', async (req, res) => {
@@ -34,6 +35,7 @@ function router(app) {
   app.use('/platform', platformRouter)
   app.use('/gameType', gameTypeRouter)
   app.use('/size', sizeRouter)
+  app.use('/set', settingRouter)
 }
 
 module.exports = router
