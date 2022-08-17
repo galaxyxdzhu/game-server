@@ -27,15 +27,7 @@ router.get('/games', async (req, res) => {
  */
 router.post('/updateGame', async (req, res) => {
   const { id, ...rest } = req.body
-  const { name } = rest
-  const gameItem = await findGameByName(name)
 
-  if (gameItem.length) {
-    return res.json({
-      code: 0,
-      message: '游戏已存在'
-    })
-  }
   const ret = await updateGame(id, rest)
   if (ret) {
     res.json({
