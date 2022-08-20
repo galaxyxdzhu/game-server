@@ -39,9 +39,9 @@ router.get('/getOrders', async (req, res) => {
  * 批量添加游戏
  */
 router.post('/addOrder', async (req, res) => {
-  const { name, phone, games, size } = req.body
+  const { name, phone, games, size, platform } = req.body
   const createAt = Date.now()
-  const ret = await addOrder(name, phone, games, size, createAt)
+  const ret = await addOrder(name, phone, games, size, platform, createAt)
   if (ret) {
     res.json({
       code: 1,

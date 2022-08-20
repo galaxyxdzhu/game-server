@@ -5,7 +5,7 @@ const { query } = require('../db')
  * @returns
  */
 async function getGames() {
-  const results = await query(`select * from game order by id desc`)
+  const results = await query(`select * from game order by isTop desc , createAt desc, id`)
   return results
 }
 
@@ -22,10 +22,10 @@ async function findGameByName(name) {
  * 添加游戏
  * @returns
  */
-async function addGame(name, size, genre, letter, added, pinyin, src, no, rate) {
+async function addGame(name, size, genre, letter, added, pinyin, src, no, rate, isTop, createAt) {
   const results = await query(
-    `insert into game (name, size, genre, letter, added, pinyin, src, no, rate) values(?,?,?,?,?,?,?,?,?)`,
-    [name, size, genre, letter, added, pinyin, src, no, rate]
+    `insert into game (name, size, genre, letter, added, pinyin, src, no, rate, isTop, createAt) values(?,?,?,?,?,?,?,?,?,?,?)`,
+    [name, size, genre, letter, added, pinyin, src, no, rate, isTop, createAt]
   )
   return results
 }
