@@ -46,7 +46,7 @@ router.post('/updateGame', async (req, res) => {
  * 添加游戏
  */
 router.post('/addGame', async (req, res) => {
-  const { name, size, genre, letter, added, pinyin, src, no, rate, isTop } = req.body
+  const { name, size, genre, letter, added, pinyin, src, no, rate } = req.body
 
   const gameItem = await findGameByName(name)
 
@@ -59,7 +59,7 @@ router.post('/addGame', async (req, res) => {
 
   const creatAt = Date.now()
 
-  const ret = await addGame(name, size, genre, letter, added, pinyin, src, no, rate, isTop, creatAt)
+  const ret = await addGame(name, size, genre, letter, added, pinyin, src, no, rate, creatAt)
 
   if (ret) {
     res.json({
@@ -81,9 +81,9 @@ router.post('/addGames', async (req, res) => {
   const { games } = req.body
   if (Array.isArray(games)) {
     games.forEach(async (item) => {
-      const { name, size, genre, letter, added, pinyin, src, no, rate, isTop } = item
+      const { name, size, genre, letter, added, pinyin, src, no, rate } = item
       const createAt = Date.now()
-      await addGame(name, size, genre, letter, added, pinyin, src, no, rate, isTop, createAt)
+      await addGame(name, size, genre, letter, added, pinyin, src, no, rate, createAt)
     })
 
     res.json({
