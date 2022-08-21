@@ -22,10 +22,10 @@ async function findGameByName(name) {
  * 添加游戏
  * @returns
  */
-async function addGame(name, size, genre, letter, added, pinyin, src, no, rate, createAt) {
+async function addGame(name, size, genre, letter, added, pinyin, src, no, rate, platform, createAt) {
   const results = await query(
-    `insert into game (name, size, genre, letter, added, pinyin, src, no, rate, createAt) values(?,?,?,?,?,?,?,?,?,?)`,
-    [name, size, genre, letter, added, pinyin, src, no, rate, createAt]
+    `insert into game (name, size, genre, letter, added, pinyin, src, no, rate, platform, createAt) values(?,?,?,?,?,?,?,?,?,?,?)`,
+    [name, size, genre, letter, added, pinyin, src, no, rate, platform, createAt]
   )
   return results
 }
