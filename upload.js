@@ -10,7 +10,7 @@ function upload(req, res) {
       if (err) {
         reject(err)
       } else {
-        const filePath = baseUploadUrl + imgPath + '/' + req.file.filename
+        const filePath = imgPath + '/' + req.file.filename
         resolve(filePath)
       }
     })
