@@ -15,6 +15,7 @@ const query = function (sql, values) {
   return new Promise((resolve, reject) => {
     pool.getConnection(function (err, connection) {
       if (err) {
+        console.log(err, '666')
         reject(err)
       } else {
         connection.query(sql, values, (err, resluts) => {
